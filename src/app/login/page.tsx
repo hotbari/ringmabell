@@ -27,17 +27,11 @@ export default function LoginPage() {
 
     try {
       if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-        });
+        const { error } = await supabase.auth.signUp({ email, password });
         if (error) throw error;
         setMessage('이메일에서 확인 링크를 눌러주세요!');
       } else {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
         router.push('/dashboard');
         router.refresh();
@@ -51,31 +45,26 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
-      <Link
-        href="/"
-        className="mb-10 text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent"
-      >
-        RingMaBell 🔔
+      <Link href="/" className="mb-10 text-4xl font-black text-[#FF4D8B] tracking-tight">
+        ★ RingMaBell ★
       </Link>
 
-      <div className="w-full max-w-md bg-white rounded-2xl p-10 border border-pink-100 shadow-xl shadow-pink-100/50">
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">
-          {isSignUp ? '회원가입' : '로그인'}
+      <div className="w-full max-w-md bg-white rounded-xl p-10 border-2 border-gray-800 shadow-[6px_6px_0px_0px_#FF4D8B]">
+        <h1 className="text-2xl font-black text-gray-800 mb-1">
+          {isSignUp ? '✦ 회원가입' : '✦ 로그인'}
         </h1>
-        <p className="text-gray-400 mb-8">
-          {isSignUp
-            ? '목표 관리를 시작해보세요 ✨'
-            : '다시 오셨네요! 반가워요 🌸'}
+        <p className="text-gray-500 mb-8 text-sm">
+          {isSignUp ? '목표 관리를 시작해보세요!' : '다시 오셨네요! 반가워요 ♥'}
         </p>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-500 text-sm">
+          <div className="mb-6 p-4 bg-red-50 border-2 border-red-400 rounded-lg text-red-600 text-sm font-medium">
             {error}
           </div>
         )}
 
         {message && (
-          <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl text-green-600 text-sm">
+          <div className="mb-6 p-4 bg-[#C8F2FF] border-2 border-blue-400 rounded-lg text-blue-700 text-sm font-medium">
             {message}
           </div>
         )}
@@ -90,7 +79,6 @@ export default function LoginPage() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-
           <Input
             id="password"
             type="password"
@@ -101,24 +89,19 @@ export default function LoginPage() {
             required
             minLength={6}
           />
-
           <Button type="submit" isLoading={isLoading} size="lg" className="w-full mt-2">
-            {isSignUp ? '회원가입' : '로그인'}
+            {isSignUp ? '회원가입하기' : '로그인하기'}
           </Button>
         </form>
 
-        <div className="mt-8 text-center">
+        <div className="mt-8 text-center text-sm">
           <span className="text-gray-400">
             {isSignUp ? '이미 계정이 있으신가요?' : '처음이신가요?'}{' '}
           </span>
           <button
             type="button"
-            onClick={() => {
-              setIsSignUp(!isSignUp);
-              setError('');
-              setMessage('');
-            }}
-            className="text-pink-500 hover:text-pink-600 font-semibold transition-colors"
+            onClick={() => { setIsSignUp(!isSignUp); setError(''); setMessage(''); }}
+            className="text-[#FF4D8B] font-bold hover:underline"
           >
             {isSignUp ? '로그인' : '회원가입'}
           </button>
@@ -126,7 +109,7 @@ export default function LoginPage() {
       </div>
 
       <p className="mt-8 text-gray-400 text-sm">
-        목표를 기록하고 알림을 받아보세요 💕
+        ♡ 목표를 기록하고 알림을 받아보세요 ♡
       </p>
     </div>
   );

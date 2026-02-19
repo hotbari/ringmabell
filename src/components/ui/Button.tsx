@@ -22,17 +22,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed active:scale-95';
+      'inline-flex items-center justify-center font-bold rounded-lg border-2 transition-all duration-150 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed active:translate-x-[2px] active:translate-y-[2px] active:shadow-none';
 
     const variants = {
       primary:
-        'bg-gradient-to-r from-pink-500 to-purple-500 text-white hover:from-pink-600 hover:to-purple-600 shadow-md shadow-pink-200 hover:shadow-lg hover:shadow-pink-300 focus:ring-pink-400',
+        'bg-[#FF4D8B] text-white border-[#c4185e] shadow-[3px_3px_0px_0px_#c4185e] hover:shadow-[1px_1px_0px_0px_#c4185e] hover:translate-x-[2px] hover:translate-y-[2px]',
       secondary:
-        'bg-white text-gray-600 hover:bg-pink-50 hover:text-pink-600 border border-pink-200 hover:border-pink-300 focus:ring-pink-300',
+        'bg-white text-gray-700 border-gray-800 shadow-[3px_3px_0px_0px_#1a1a1a] hover:shadow-[1px_1px_0px_0px_#1a1a1a] hover:translate-x-[2px] hover:translate-y-[2px]',
       danger:
-        'bg-red-500 text-white hover:bg-red-600 focus:ring-red-400',
+        'bg-[#FF4444] text-white border-[#cc0000] shadow-[3px_3px_0px_0px_#cc0000] hover:shadow-[1px_1px_0px_0px_#cc0000] hover:translate-x-[2px] hover:translate-y-[2px]',
       ghost:
-        'bg-transparent text-gray-400 hover:bg-pink-50 hover:text-pink-500 focus:ring-pink-300',
+        'bg-transparent text-gray-500 border-transparent hover:bg-pink-100 hover:border-pink-300 hover:text-pink-600',
     };
 
     const sizes = {

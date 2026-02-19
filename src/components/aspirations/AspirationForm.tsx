@@ -65,7 +65,7 @@ export function AspirationForm({ aspiration, mode }: AspirationFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-500 text-sm animate-fade-in">
+        <div className="p-4 bg-red-50 border-2 border-red-400 rounded-lg text-red-600 text-sm font-medium animate-fade-in">
           {error}
         </div>
       )}
