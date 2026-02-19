@@ -49,3 +49,26 @@ export interface UpdateAspirationInput {
   deadline?: string | null;
   status?: AspirationStatus;
 }
+
+// Alert System Types
+export type AlertType =
+  | 'reminder'       // 일반 리마인더 (주기적)
+  | 'deadline_soon'  // 임박 (3일 이내)
+  | 'deadline_today' // 당일
+  | 'overdue';       // 초과
+
+export type UrgencyLevel = 'low' | 'medium' | 'high' | 'critical';
+export type AlertStatus = 'pending' | 'done';
+
+export interface Alert {
+  id: string;
+  user_id: string;
+  aspiration_id: string;
+  type: AlertType;
+  status: AlertStatus;
+  message: string;
+  sent_to_discord: boolean;
+  created_at: string;
+  read_at: string | null;
+  aspiration?: Aspiration;
+}
