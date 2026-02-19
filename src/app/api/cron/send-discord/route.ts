@@ -22,7 +22,7 @@ interface AlertWithAspiration {
   aspiration: {
     id: string;
     title: string;
-  } | null;
+  }[] | null;
 }
 
 function getColorForAlertType(type: AlertType): number {
@@ -88,7 +88,7 @@ export async function GET(request: Request) {
 
     for (const alert of alerts as AlertWithAspiration[]) {
       const embed = {
-        title: `🔔 ${alert.aspiration?.title || 'Alert'}`,
+        title: `🔔 ${alert.aspiration?.[0]?.title || 'Alert'}`,
         description: alert.message,
         color: getColorForAlertType(alert.type),
         footer: { text: 'RingMaBell - Keep Your Dreams Alive' },

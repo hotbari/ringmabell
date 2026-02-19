@@ -211,7 +211,7 @@ async function sendDiscordNotifications(): Promise<number> {
     for (const alert of alerts) {
       const color = getDiscordColor(alert.type as AlertType);
       const embed = {
-        title: `🔔 ${(alert.aspiration as { title: string } | null)?.title || 'Alert'}`,
+        title: `🔔 ${(alert.aspiration as { id: string; title: string }[] | null)?.[0]?.title || 'Alert'}`,
         description: alert.message,
         color,
         footer: { text: 'RingMaBell' },
