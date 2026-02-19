@@ -2,11 +2,7 @@
   "crons": [
     {
       "path": "/api/cron/generate-alerts",
-      "schedule": "0 */12 * * *"
-    },
-    {
-      "path": "/api/cron/send-discord",
-      "schedule": "5 */12 * * *"
+      "schedule": "0 9 * * *"
     }
   ]
 }

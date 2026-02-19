@@ -170,8 +170,90 @@ export async function GET(request: Request) {
 
   console.log(`Cron: Generated ${createdAlerts?.length || 0} alerts`);
 
+  // Send Discord notifications
+  const discordSent = await sendDiscordNotifications();
+
   return NextResponse.json({
-    message: `Generated ${createdAlerts?.length || 0} new alerts`,
+    message: `Generated ${createdAlerts?.length || 0} new alerts, sent ${discordSent} to Discord`,
     generated: createdAlerts?.length || 0,
+    discordSent,
   });
+}
+
+// Discord notification logic
+async function sendDiscordNotifications(): Promise<number> {
+  // Get all users with Discord configured
+  const { data: userSettings } = await supabase
+    .from('user_settings')
+    .select('user_id, discord_webhook_url, notification_enabled')
+    .eq('notification_enabled', true)
+    .not('discord_webhook_url', 'is', null);
+
+  if (!userSettings || userSettings.length === 0) {
+    return 0;
+  }
+
+  let totalSent = 0;
+
+  for (const settings of userSettings) {
+    // Get pending alerts not yet sent to Discord
+    const { data: alerts } = await supabase
+      .from('alerts')
+      .select('id, type, message, aspiration:aspirations(id, title)')
+      .eq('user_id', settings.user_id)
+      .eq('status', 'pending')
+      .eq('sent_to_discord', false);
+
+    if (!alerts || alerts.length === 0) continue;
+
+    const sentAlertIds: string[] = [];
+
+    for (const alert of alerts) {
+      const color = getDiscordColor(alert.type as AlertType);
+      const embed = {
+        title: `🔔 ${(alert.aspiration as { title: string } | null)?.title || 'Alert'}`,
+        description: alert.message,
+        color,
+        footer: { text: 'RingMaBell' },
+        timestamp: new Date().toISOString(),
+      };
+
+      try {
+        const response = await fetch(settings.discord_webhook_url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: 'RingMaBell',
+            embeds: [embed],
+          }),
+        });
+
+        if (response.ok) {
+          totalSent++;
+          sentAlertIds.push(alert.id);
+        }
+        await new Promise((r) => setTimeout(r, 100)); // Rate limit
+      } catch (error) {
+        console.error('Discord send failed:', error);
+      }
+    }
+
+    if (sentAlertIds.length > 0) {
+      await supabase
+        .from('alerts')
+        .update({ sent_to_discord: true })
+        .in('id', sentAlertIds);
+    }
+  }
+
+  return totalSent;
+}
+
+function getDiscordColor(type: AlertType): number {
+  switch (type) {
+    case 'overdue': return 0xef4444;
+    case 'deadline_today': return 0xf97316;
+    case 'deadline_soon': return 0xf59e0b;
+    default: return 0x3b82f6;
+  }
 }
