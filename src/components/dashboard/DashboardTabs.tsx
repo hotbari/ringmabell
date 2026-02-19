@@ -38,11 +38,10 @@ export function DashboardTabs({
       <div className="flex gap-4 mb-8 border-b border-gray-800">
         <button
           onClick={() => setActiveTab('aspirations')}
-          className={`pb-3 px-1 text-lg font-semibold transition-colors relative ${
-            activeTab === 'aspirations'
-              ? 'text-white'
-              : 'text-gray-500 hover:text-gray-300'
-          }`}
+          className={`pb-3 px-1 text-lg font-semibold transition-colors relative ${activeTab === 'aspirations'
+            ? 'text-white'
+            : 'text-gray-500 hover:text-gray-300'
+            }`}
         >
           Aspirations
           {activeTab === 'aspirations' && (
@@ -51,11 +50,10 @@ export function DashboardTabs({
         </button>
         <button
           onClick={() => setActiveTab('alerts')}
-          className={`pb-3 px-1 text-lg font-semibold transition-colors relative flex items-center gap-2 ${
-            activeTab === 'alerts'
-              ? 'text-white'
-              : 'text-gray-500 hover:text-gray-300'
-          }`}
+          className={`pb-3 px-1 text-lg font-semibold transition-colors relative flex items-center gap-2 ${activeTab === 'alerts'
+            ? 'text-white'
+            : 'text-gray-500 hover:text-gray-300'
+            }`}
         >
           Alerts
           {pendingAlertCount > 0 && (
