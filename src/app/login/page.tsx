@@ -53,29 +53,29 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
       <Link
         href="/"
-        className="mb-10 text-4xl font-bold text-violet-400"
+        className="mb-10 text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent"
       >
-        RingMaBell
+        RingMaBell 🔔
       </Link>
 
-      <div className="w-full max-w-md bg-[#1a1a1a] rounded-lg p-10 border border-gray-800">
-        <h1 className="text-2xl font-bold text-white mb-2">
+      <div className="w-full max-w-md bg-white rounded-2xl p-10 border border-pink-100 shadow-xl shadow-pink-100/50">
+        <h1 className="text-2xl font-bold text-gray-800 mb-2">
           {isSignUp ? '회원가입' : '로그인'}
         </h1>
         <p className="text-gray-400 mb-8">
           {isSignUp
-            ? '목표 관리를 시작해보세요'
-            : '다시 오셨네요!'}
+            ? '목표 관리를 시작해보세요 ✨'
+            : '다시 오셨네요! 반가워요 🌸'}
         </p>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-lg text-red-400 text-sm">
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-500 text-sm">
             {error}
           </div>
         )}
 
         {message && (
-          <div className="mb-6 p-4 bg-green-500/10 border border-green-500/50 rounded-lg text-green-400 text-sm">
+          <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl text-green-600 text-sm">
             {message}
           </div>
         )}
@@ -108,7 +108,7 @@ export default function LoginPage() {
         </form>
 
         <div className="mt-8 text-center">
-          <span className="text-gray-500">
+          <span className="text-gray-400">
             {isSignUp ? '이미 계정이 있으신가요?' : '처음이신가요?'}{' '}
           </span>
           <button
@@ -118,15 +118,15 @@ export default function LoginPage() {
               setError('');
               setMessage('');
             }}
-            className="text-violet-400 hover:text-violet-300 font-semibold transition-colors"
+            className="text-pink-500 hover:text-pink-600 font-semibold transition-colors"
           >
             {isSignUp ? '로그인' : '회원가입'}
           </button>
         </div>
       </div>
 
-      <p className="mt-8 text-gray-600 text-sm">
-        목표를 기록하고 알림을 받아보세요
+      <p className="mt-8 text-gray-400 text-sm">
+        목표를 기록하고 알림을 받아보세요 💕
       </p>
     </div>
   );

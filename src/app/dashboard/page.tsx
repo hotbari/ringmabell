@@ -55,16 +55,16 @@ export default async function DashboardPage() {
           {/* Hero Section */}
           <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
             <div className="animate-fade-in">
-              <h2 className="text-4xl font-bold text-white mb-2">
-                My Dashboard
+              <h2 className="text-4xl font-bold text-gray-800 mb-2">
+                My Dashboard ✨
               </h2>
               <p className="text-gray-400">
-                {activeAspirations.length} active dreams to pursue
+                {activeAspirations.length}개의 꿈을 향해 나아가는 중이에요
               </p>
             </div>
             <Link
               href="/new"
-              className="group flex items-center gap-2 px-6 py-3 bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg transition-all duration-300 shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 hover:scale-105 active:scale-95"
+              className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-full transition-all duration-300 shadow-lg shadow-pink-200 hover:shadow-xl hover:shadow-pink-300 hover:scale-105 active:scale-95"
             >
               <svg
                 className="w-5 h-5"
@@ -79,7 +79,7 @@ export default async function DashboardPage() {
                   d="M12 4v16m8-8H4"
                 />
               </svg>
-              New Aspiration
+              새 목표 추가
             </Link>
           </div>
 

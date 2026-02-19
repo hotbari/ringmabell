@@ -28,27 +28,27 @@ export function AspirationCard({ aspiration }: AspirationCardProps) {
 
   return (
     <Link href={`/aspirations/${aspiration.id}`} className="block">
-      <div className="group bg-[#1f1f1f] rounded-lg overflow-hidden border border-gray-800 hover:border-violet-500/50 transition-colors p-5">
+      <div className="group bg-white rounded-2xl overflow-hidden border border-pink-100 hover:border-pink-300 hover:shadow-lg hover:shadow-pink-100 transition-all duration-200 p-5">
         {/* Status indicator */}
         <div className="flex items-center justify-between mb-3">
           <span
-            className={`text-xs font-medium px-2 py-1 rounded ${
+            className={`text-xs font-medium px-2.5 py-1 rounded-full ${
               aspiration.status === 'completed'
-                ? 'bg-green-500/20 text-green-400'
-                : 'bg-violet-500/20 text-violet-400'
+                ? 'bg-emerald-100 text-emerald-600'
+                : 'bg-pink-100 text-pink-600'
             }`}
           >
-            {aspiration.status === 'completed' ? '완료' : '진행중'}
+            {aspiration.status === 'completed' ? '✅ 완료' : '🌸 진행중'}
           </span>
 
           {daysUntil !== null && (
             <span
-              className={`text-xs px-2 py-1 rounded font-medium ${
+              className={`text-xs px-2.5 py-1 rounded-full font-medium ${
                 daysUntil < 0
-                  ? 'bg-red-500/20 text-red-400'
+                  ? 'bg-red-100 text-red-500'
                   : daysUntil <= 7
-                  ? 'bg-amber-500/20 text-amber-400'
-                  : 'bg-gray-700 text-gray-400'
+                  ? 'bg-amber-100 text-amber-600'
+                  : 'bg-purple-100 text-purple-500'
               }`}
             >
               {daysUntil < 0
@@ -60,15 +60,15 @@ export function AspirationCard({ aspiration }: AspirationCardProps) {
           )}
         </div>
 
-        <h3 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-violet-300 transition-colors">
+        <h3 className="text-base font-bold text-gray-800 mb-2 line-clamp-2 group-hover:text-pink-500 transition-colors">
           {aspiration.title}
         </h3>
 
-        <p className="text-sm text-gray-500 line-clamp-2 mb-4">
+        <p className="text-sm text-gray-400 line-clamp-2 mb-4">
           {aspiration.details}
         </p>
 
-        <span className="text-xs text-gray-600">
+        <span className="text-xs text-gray-300">
           {formatDate(aspiration.created_at)}
         </span>
       </div>

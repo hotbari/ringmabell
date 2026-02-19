@@ -35,34 +35,34 @@ export function DashboardTabs({
   return (
     <div>
       {/* Tab Navigation */}
-      <div className="flex gap-4 mb-8 border-b border-gray-800">
+      <div className="flex gap-2 mb-8">
         <button
           onClick={() => setActiveTab('aspirations')}
-          className={`pb-3 px-1 text-lg font-semibold transition-colors relative ${activeTab === 'aspirations'
-            ? 'text-white'
-            : 'text-gray-500 hover:text-gray-300'
-            }`}
+          className={`px-5 py-2.5 text-sm font-semibold rounded-full transition-all ${
+            activeTab === 'aspirations'
+              ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-md shadow-pink-200'
+              : 'bg-white text-gray-400 hover:text-gray-600 border border-pink-100'
+          }`}
         >
-          Aspirations
-          {activeTab === 'aspirations' && (
-            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-500" />
-          )}
+          나의 목표들 🌸
         </button>
         <button
           onClick={() => setActiveTab('alerts')}
-          className={`pb-3 px-1 text-lg font-semibold transition-colors relative flex items-center gap-2 ${activeTab === 'alerts'
-            ? 'text-white'
-            : 'text-gray-500 hover:text-gray-300'
-            }`}
+          className={`px-5 py-2.5 text-sm font-semibold rounded-full transition-all flex items-center gap-2 ${
+            activeTab === 'alerts'
+              ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-md shadow-pink-200'
+              : 'bg-white text-gray-400 hover:text-gray-600 border border-pink-100'
+          }`}
         >
-          Alerts
+          알림
           {pendingAlertCount > 0 && (
-            <span className="bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+              activeTab === 'alerts'
+                ? 'bg-white/30 text-white'
+                : 'bg-pink-100 text-pink-600'
+            }`}>
               {pendingAlertCount}
             </span>
-          )}
-          {activeTab === 'alerts' && (
-            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-violet-500" />
           )}
         </button>
       </div>
@@ -73,20 +73,20 @@ export function DashboardTabs({
           {/* Empty State */}
           {activeAspirations.length === 0 && completedAspirations.length === 0 && (
             <div className="text-center py-20 animate-fade-in">
-              <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-violet-600/20 flex items-center justify-center">
+              <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center">
                 <span className="text-5xl">🌟</span>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3">
-                Start Your Journey
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">
+                첫 번째 꿈을 기록해봐요!
               </h3>
               <p className="text-gray-400 mb-8 max-w-md mx-auto">
-                Add your first aspiration and let AI help you stay motivated
+                이루고 싶은 목표를 적어두면 AI가 도와드릴게요 ✨
               </p>
               <Link
                 href="/new"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-violet-600 hover:bg-violet-500 text-white font-semibold rounded-lg transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-semibold rounded-full transition-all shadow-lg shadow-pink-200 hover:shadow-xl hover:shadow-pink-300"
               >
-                Add Your First Dream
+                첫 번째 목표 추가하기 🌸
               </Link>
             </div>
           )}
@@ -94,9 +94,9 @@ export function DashboardTabs({
           {/* Active Aspirations */}
           {activeAspirations.length > 0 && (
             <section className="mb-12">
-              <h3 className="text-xl font-semibold text-white mb-6 flex items-center gap-2">
-                <span className="w-1 h-6 bg-violet-500 rounded-full"></span>
-                Active
+              <h3 className="text-lg font-semibold text-gray-700 mb-6 flex items-center gap-2">
+                <span className="w-1 h-5 bg-gradient-to-b from-pink-400 to-purple-400 rounded-full"></span>
+                진행 중 💪
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {activeAspirations.map((aspiration, i) => (
@@ -115,11 +115,11 @@ export function DashboardTabs({
           {/* Completed Aspirations */}
           {completedAspirations.length > 0 && (
             <section>
-              <h3 className="text-xl font-semibold text-gray-400 mb-6 flex items-center gap-2">
-                <span className="w-1 h-6 bg-green-500 rounded-full"></span>
-                Completed
+              <h3 className="text-lg font-semibold text-gray-500 mb-6 flex items-center gap-2">
+                <span className="w-1 h-5 bg-gradient-to-b from-emerald-400 to-teal-400 rounded-full"></span>
+                완료한 목표들 ✅
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 opacity-60">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 opacity-70">
                 {completedAspirations.map((aspiration, i) => (
                   <div
                     key={aspiration.id}

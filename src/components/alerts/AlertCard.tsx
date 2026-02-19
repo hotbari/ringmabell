@@ -27,29 +27,29 @@ export function AlertCard({ alert, onMarkDone }: AlertCardProps) {
     return `${diffDays}일 전`;
   };
 
-  const getAlertColor = () => {
+  const getAlertStyle = () => {
     switch (alert.type) {
       case 'overdue':
-        return 'border-red-500/50 bg-red-500/5';
+        return 'border-red-200 bg-red-50';
       case 'deadline_today':
-        return 'border-orange-500/50 bg-orange-500/5';
+        return 'border-orange-200 bg-orange-50';
       case 'deadline_soon':
-        return 'border-amber-500/50 bg-amber-500/5';
+        return 'border-amber-200 bg-amber-50';
       case 'reminder':
-        return 'border-blue-500/50 bg-blue-500/5';
+        return 'border-purple-200 bg-purple-50';
     }
   };
 
   const getAlertLabel = () => {
     switch (alert.type) {
       case 'overdue':
-        return '기한 지남';
+        return { text: '기한 지남', style: 'bg-red-100 text-red-600' };
       case 'deadline_today':
-        return '오늘 마감';
+        return { text: '오늘 마감', style: 'bg-orange-100 text-orange-600' };
       case 'deadline_soon':
-        return '마감 임박';
+        return { text: '마감 임박', style: 'bg-amber-100 text-amber-600' };
       case 'reminder':
-        return '리마인더';
+        return { text: '리마인더', style: 'bg-purple-100 text-purple-600' };
     }
   };
 
@@ -62,46 +62,38 @@ export function AlertCard({ alert, onMarkDone }: AlertCardProps) {
     }
   };
 
+  const label = getAlertLabel();
+
   return (
     <div
-      className={`relative rounded-lg border p-4 ${getAlertColor()} ${
+      className={`relative rounded-2xl border p-4 ${getAlertStyle()} ${
         alert.status === 'done' ? 'opacity-60' : ''
       }`}
     >
       <div className="flex items-start gap-3">
-        <span
-          className={`text-xs font-medium px-2 py-1 rounded flex-shrink-0 ${
-            alert.type === 'overdue'
-              ? 'bg-red-500/20 text-red-400'
-              : alert.type === 'deadline_today'
-              ? 'bg-orange-500/20 text-orange-400'
-              : alert.type === 'deadline_soon'
-              ? 'bg-amber-500/20 text-amber-400'
-              : 'bg-blue-500/20 text-blue-400'
-          }`}
-        >
-          {getAlertLabel()}
+        <span className={`text-xs font-medium px-2.5 py-1 rounded-full flex-shrink-0 ${label.style}`}>
+          {label.text}
         </span>
 
         <div className="flex-1 min-w-0">
           {alert.aspiration && (
             <Link
               href={`/aspirations/${alert.aspiration_id}`}
-              className="text-sm font-semibold text-violet-400 hover:text-violet-300 transition-colors line-clamp-1"
+              className="text-sm font-semibold text-pink-500 hover:text-pink-600 transition-colors line-clamp-1"
             >
               {alert.aspiration.title}
             </Link>
           )}
 
-          <p className="text-white mt-1">{alert.message}</p>
+          <p className="text-gray-700 mt-1 text-sm">{alert.message}</p>
 
           <div className="flex items-center gap-3 mt-3">
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-400">
               {getTimeAgo(alert.created_at)}
             </span>
 
             {alert.sent_to_discord && (
-              <span className="text-xs text-gray-500 flex items-center gap-1">
+              <span className="text-xs text-gray-400 flex items-center gap-1">
                 <svg
                   className="w-3 h-3"
                   viewBox="0 0 24 24"
@@ -128,7 +120,7 @@ export function AlertCard({ alert, onMarkDone }: AlertCardProps) {
         )}
 
         {alert.status === 'done' && (
-          <span className="text-green-500 text-lg flex-shrink-0">✓</span>
+          <span className="text-emerald-500 text-lg flex-shrink-0">✓</span>
         )}
       </div>
     </div>

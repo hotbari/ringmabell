@@ -22,17 +22,17 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-semibold rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#141414] disabled:opacity-50 disabled:cursor-not-allowed active:scale-95';
+      'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white disabled:opacity-50 disabled:cursor-not-allowed active:scale-95';
 
     const variants = {
       primary:
-        'bg-violet-600 text-white hover:bg-violet-500 focus:ring-violet-500',
+        'bg-gradient-to-r from-pink-500 to-purple-500 text-white hover:from-pink-600 hover:to-purple-600 shadow-md shadow-pink-200 hover:shadow-lg hover:shadow-pink-300 focus:ring-pink-400',
       secondary:
-        'bg-[#2a2a2a] text-white hover:bg-[#363636] focus:ring-gray-500 border border-gray-700',
+        'bg-white text-gray-600 hover:bg-pink-50 hover:text-pink-600 border border-pink-200 hover:border-pink-300 focus:ring-pink-300',
       danger:
-        'bg-red-600 text-white hover:bg-red-500 focus:ring-red-500',
+        'bg-red-500 text-white hover:bg-red-600 focus:ring-red-400',
       ghost:
-        'bg-transparent text-gray-300 hover:bg-white/10 hover:text-white focus:ring-gray-500',
+        'bg-transparent text-gray-400 hover:bg-pink-50 hover:text-pink-500 focus:ring-pink-300',
     };
 
     const sizes = {

@@ -45,10 +45,10 @@ export function MotivationButton({ aspirationId }: MotivationButtonProps) {
       </Button>
 
       {motivation && (
-        <div className="mt-6 p-6 bg-gradient-to-br from-violet-600/20 to-purple-600/20 rounded-xl border border-violet-500/30 animate-fade-in">
+        <div className="mt-6 p-6 bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl border border-pink-200 animate-fade-in">
           <div className="flex items-start gap-3">
-            <span className="text-2xl">💜</span>
-            <p className="text-gray-200 leading-relaxed">{motivation}</p>
+            <span className="text-2xl">💕</span>
+            <p className="text-gray-700 leading-relaxed">{motivation}</p>
           </div>
         </div>
       )}

@@ -37,7 +37,7 @@ export function DeleteButton({ aspirationId }: DeleteButtonProps) {
   if (isConfirming) {
     return (
       <div className="flex items-center gap-2 animate-fade-in">
-        <span className="text-sm text-gray-400">Delete?</span>
+        <span className="text-sm text-gray-500">삭제할까요?</span>
         <Button
           size="sm"
           variant="danger"

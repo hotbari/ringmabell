@@ -45,9 +45,9 @@ export function AlertList({ initialAlerts }: AlertListProps) {
     return (
       <div className="text-center py-16">
         <div className="text-6xl mb-4">🔔</div>
-        <h3 className="text-xl font-semibold text-white mb-2">No alerts yet</h3>
-        <p className="text-gray-500 max-w-sm mx-auto">
-          Alerts will appear here when your aspirations approach their deadlines.
+        <h3 className="text-xl font-semibold text-gray-700 mb-2">알림이 없어요</h3>
+        <p className="text-gray-400 max-w-sm mx-auto">
+          목표 마감일이 가까워지면 알림이 여기에 나타날 거예요 🌸
         </p>
       </div>
     );
@@ -59,33 +59,33 @@ export function AlertList({ initialAlerts }: AlertListProps) {
       <div className="flex gap-2 mb-6">
         <button
           onClick={() => setFilter('all')}
-          className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+          className={`px-4 py-2 text-sm rounded-full transition-all font-medium ${
             filter === 'all'
-              ? 'bg-violet-600 text-white'
-              : 'bg-[#2a2a2a] text-gray-400 hover:text-white'
+              ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-md shadow-pink-200'
+              : 'bg-white text-gray-400 hover:text-gray-600 border border-pink-100'
           }`}
         >
-          All ({alerts.length})
+          전체 ({alerts.length})
         </button>
         <button
           onClick={() => setFilter('pending')}
-          className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+          className={`px-4 py-2 text-sm rounded-full transition-all font-medium ${
             filter === 'pending'
-              ? 'bg-violet-600 text-white'
-              : 'bg-[#2a2a2a] text-gray-400 hover:text-white'
+              ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-md shadow-pink-200'
+              : 'bg-white text-gray-400 hover:text-gray-600 border border-pink-100'
           }`}
         >
-          Pending ({pendingCount})
+          대기중 ({pendingCount})
         </button>
         <button
           onClick={() => setFilter('done')}
-          className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+          className={`px-4 py-2 text-sm rounded-full transition-all font-medium ${
             filter === 'done'
-              ? 'bg-violet-600 text-white'
-              : 'bg-[#2a2a2a] text-gray-400 hover:text-white'
+              ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white shadow-md shadow-pink-200'
+              : 'bg-white text-gray-400 hover:text-gray-600 border border-pink-100'
           }`}
         >
-          Done ({alerts.length - pendingCount})
+          완료 ({alerts.length - pendingCount})
         </button>
       </div>
 
@@ -102,8 +102,8 @@ export function AlertList({ initialAlerts }: AlertListProps) {
         ))}
 
         {filteredAlerts.length === 0 && (
-          <div className="text-center py-8 text-gray-500">
-            No {filter} alerts
+          <div className="text-center py-8 text-gray-400">
+            {filter === 'pending' ? '대기 중인 알림이 없어요 ✨' : '완료된 알림이 없어요'}
           </div>
         )}
       </div>
