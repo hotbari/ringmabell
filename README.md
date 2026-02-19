@@ -1,6 +1,6 @@
 # RingMaBell
 
-**Keep Your Dreams Alive** - 목표와 꿈을 추적하고, AI 기반 동기부여 알림을 받아보세요.
+**Keep Your Dreams Alive** - 목표와 꿈을 추적하고, AI 기반 동기부여 알림을 받아보세요!
 
 ## 주요 기능
 
