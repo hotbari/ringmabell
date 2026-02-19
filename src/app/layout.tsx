@@ -1,22 +1,18 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Noto_Sans_KR } from 'next/font/google';
 import './globals.css';
 import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const notoSansKR = Noto_Sans_KR({
+  variable: '--font-noto-sans-kr',
   subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  weight: ['400', '500', '700'],
 });
 
 export const metadata: Metadata = {
-  title: 'RingMaBell - Keep Your Aspirations Alive',
+  title: 'RingMaBell - 목표 알림 서비스',
   description:
-    'Capture your fleeting thoughts and aspirations. Get personalized AI reminders to keep them alive.',
+    '목표를 기록하고 AI 알림을 받아보세요. 작은 실천이 큰 변화를 만듭니다.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -38,12 +34,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <head>
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${notoSansKR.variable} antialiased`}
       >
         {children}
         <ServiceWorkerRegistration />

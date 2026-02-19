@@ -32,7 +32,6 @@ export function DashboardHeader({
     fetchSettings();
   }, []);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (notificationRef.current && !notificationRef.current.contains(event.target as Node)) {
@@ -47,16 +46,16 @@ export function DashboardHeader({
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-[#141414] via-[#141414]/95 to-transparent">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#141414]/95 backdrop-blur-sm border-b border-gray-800/50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold gradient-text">RingMaBell</h1>
+          <h1 className="text-2xl font-bold text-violet-400">RingMaBell</h1>
           <div className="flex items-center gap-4">
             {/* Notification Bell */}
             <div className="relative" ref={notificationRef}>
               <button
                 onClick={() => setIsNotificationOpen(!isNotificationOpen)}
                 className="relative text-gray-400 hover:text-white transition-colors p-2"
-                title="Notifications"
+                title="알림"
               >
                 <svg
                   className="w-6 h-6"
@@ -72,7 +71,7 @@ export function DashboardHeader({
                   />
                 </svg>
                 {pendingAlertCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full animate-pulse">
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">
                     {pendingAlertCount > 9 ? '9+' : pendingAlertCount}
                   </span>
                 )}
@@ -82,15 +81,15 @@ export function DashboardHeader({
               {isNotificationOpen && (
                 <div className="absolute right-0 mt-2 w-80 bg-[#1a1a1a] border border-gray-800 rounded-xl shadow-xl overflow-hidden z-50">
                   <div className="p-4 border-b border-gray-800 flex justify-between items-center">
-                    <h3 className="font-semibold text-white">Notifications</h3>
+                    <h3 className="font-semibold text-white">알림</h3>
                     {pendingAlertCount > 0 && (
-                      <span className="text-xs text-gray-400">{pendingAlertCount} pending</span>
+                      <span className="text-xs text-gray-400">{pendingAlertCount}개 대기중</span>
                     )}
                   </div>
                   <div className="max-h-80 overflow-y-auto">
                     {pendingAlerts.length === 0 ? (
                       <div className="p-6 text-center text-gray-500">
-                        <p>No notifications</p>
+                        <p>알림이 없어요</p>
                       </div>
                     ) : (
                       pendingAlerts.map((alert) => (
@@ -100,7 +99,7 @@ export function DashboardHeader({
                         >
                           <p className="text-sm text-white line-clamp-2">{alert.message}</p>
                           <p className="text-xs text-gray-500 mt-1">
-                            {alert.aspiration?.title || 'Alert'}
+                            {alert.aspiration?.title || '알림'}
                           </p>
                         </div>
                       ))
@@ -111,7 +110,7 @@ export function DashboardHeader({
                     className="block p-3 text-center text-sm text-violet-400 hover:bg-gray-800/50 transition-colors"
                     onClick={() => setIsNotificationOpen(false)}
                   >
-                    View all alerts
+                    전체 알림 보기
                   </Link>
                 </div>
               )}
@@ -120,7 +119,7 @@ export function DashboardHeader({
             <button
               onClick={() => setIsSettingsOpen(true)}
               className="text-gray-400 hover:text-white transition-colors p-2"
-              title="Settings"
+              title="설정"
             >
               <svg
                 className="w-5 h-5"
@@ -152,7 +151,7 @@ export function DashboardHeader({
                 type="submit"
                 className="text-gray-400 hover:text-white transition-colors text-sm"
               >
-                Sign Out
+                로그아웃
               </button>
             </form>
           </div>

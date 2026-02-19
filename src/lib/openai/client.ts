@@ -20,13 +20,17 @@ export async function generateReminder(
     messages: [
       {
         role: 'user',
-        content: `You are a supportive friend. Write a short, warm reminder (2-3 sentences) about this aspiration:
+        content: `당신은 친근한 친구예요. 아래 목표에 대해 짧고 따뜻한 리마인더를 한국어로 작성해주세요 (2-3문장).
 
-"${aspirationTitle}"
-Details: "${aspirationDetails}"
+목표: "${aspirationTitle}"
+상세 내용: "${aspirationDetails}"
 ${deadlineContext}
 
-Be encouraging but not cheesy. Suggest one small action they could take today.`,
+말투 가이드:
+- 20-30대가 쓰는 편한 존댓말 (~요, ~에요)
+- "화이팅이에요", "할 수 있어요", "한번 해봐요" 같은 자연스러운 표현
+- 이모지는 쓰지 마세요
+- 오늘 할 수 있는 작은 행동 하나를 제안해주세요`,
       },
     ],
     max_tokens: 200,

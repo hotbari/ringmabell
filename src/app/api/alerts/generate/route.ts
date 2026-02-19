@@ -168,12 +168,12 @@ export async function POST() {
 function getFallbackMessage(type: AlertType, title: string, daysUntil: number): string {
   switch (type) {
     case 'reminder':
-      return `Keep going with "${title}"! ${daysUntil} days until your deadline.`;
+      return `"${title}" 목표 잊지 않으셨죠? 마감까지 ${daysUntil}일 남았어요. 오늘도 조금씩 해봐요!`;
     case 'deadline_soon':
-      return `Only ${daysUntil} days left for "${title}"! Time to focus.`;
+      return `"${title}" 마감이 ${daysUntil}일 남았어요! 지금 집중해보는 건 어때요?`;
     case 'deadline_today':
-      return `Today is the day for "${title}"! You've got this.`;
+      return `오늘이 "${title}" 마감일이에요! 할 수 있어요, 화이팅!`;
     case 'overdue':
-      return `"${title}" is overdue. What's one thing you can do right now?`;
+      return `"${title}" 마감이 지났지만 괜찮아요. 지금 할 수 있는 것부터 시작해봐요!`;
   }
 }
