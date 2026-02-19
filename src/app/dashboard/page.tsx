@@ -46,6 +46,7 @@ export default async function DashboardPage() {
       <DashboardHeader
         userEmail={user.email || ''}
         pendingAlertCount={pendingAlertCount}
+        alerts={alerts}
       />
 
       {/* Main Content */}

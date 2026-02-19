@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Aspiration, Alert } from '@/types';
 import { AspirationCard } from '@/components/aspirations/AspirationCard';
 import { AlertList } from '@/components/alerts/AlertList';
@@ -17,9 +18,17 @@ export function DashboardTabs({
   completedAspirations,
   alerts,
 }: DashboardTabsProps) {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get('tab');
   const [activeTab, setActiveTab] = useState<'aspirations' | 'alerts'>(
-    'aspirations'
+    tabParam === 'alerts' ? 'alerts' : 'aspirations'
   );
+
+  useEffect(() => {
+    if (tabParam === 'alerts') {
+      setActiveTab('alerts');
+    }
+  }, [tabParam]);
 
   const pendingAlertCount = alerts.filter((a) => a.status === 'pending').length;
 
