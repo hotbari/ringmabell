@@ -72,7 +72,7 @@ export function DashboardTabs({
           {/* Empty State */}
           {activeAspirations.length === 0 && completedAspirations.length === 0 && (
             <div className="text-center py-16 animate-fade-in">
-              <Image src="/hamdang-Photoroom.png" alt="햄당이" width={160} height={160} className="mx-auto mb-4 drop-shadow-md" />
+              <Image src="/Photoroom.png" alt="햄당이" width={160} height={160} className="mx-auto mb-4 drop-shadow-md" />
               <h3 className="text-2xl font-black text-gray-800 mb-3">
                 첫 번째 꿈을 기록해봐요!
               </h3>

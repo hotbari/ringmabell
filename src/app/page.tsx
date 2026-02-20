@@ -72,7 +72,7 @@ export default async function Home() {
                 <div className="absolute -bottom-[10px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[10px] border-l-transparent border-r-transparent border-t-gray-800" />
                 <div className="absolute -bottom-[7px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[8px] border-l-transparent border-r-transparent border-t-white" />
               </div>
-              <Image src="/hamdang-Photoroom.png" alt="햄당이" width={256} height={256} className="w-52 h-52 md:w-64 md:h-64 drop-shadow-lg" />
+              <Image src="/Photoroom.png" alt="햄당이" width={256} height={256} className="w-52 h-52 md:w-64 md:h-64 drop-shadow-lg" />
             </div>
           </div>
 
