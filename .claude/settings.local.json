@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(ls:*)",
+      "Bash(grep:*)",
+      "Bash(/tmp/find_webhook_eslint.py:*)",
+      "Bash(/tmp/search_snapshots.py:*)",
+      "Bash(npx next build:*)"
+    ]
+  }
+}
